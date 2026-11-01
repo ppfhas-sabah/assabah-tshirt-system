@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Order Kaos Seragam ASSAB'AH</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', sans-serif; }
+        .glass-card { background: rgba(22, 27, 34, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-glow { transition: all 0.3s ease; box-shadow: 0 0 15px rgba(20, 184, 166, 0.3); }
+        .btn-glow:hover { box-shadow: 0 0 25px rgba(20, 184, 166, 0.6); }
+    </style>
+</head>
+<body class="pb-24 md:pb-10">
+
+    <!-- Header Navigation -->
+    <nav class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="bg-teal-500 text-slate-950 font-black px-2.5 py-1 rounded text-lg tracking-wider">ASSAB'AH</span>
+                <span class="text-xs font-semibold text-slate-400 hidden sm:inline">OFFICIAL PRE-ORDER</span>
+            </div>
+            <a href="https://wa.me/6285774823706?text=Halo%20Admin,%20saya%20mau%20tanya%20tentang%20seragam%20kaos%20Assab'ah" target="_blank" class="flex items-center space-x-2 bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-emerald-600 hover:text-white transition">
+                <i class="fab fa-whatsapp text-sm font-bold"></i>
+                <span>Tanya Admin</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Navigation Tabs Header -->
+    <div class="max-w-4xl mx-auto px-4 mt-4">
+        <div class="grid grid-cols-4 gap-1 p-1 bg-slate-900 rounded-xl border border-slate-800 text-center text-xs font-bold">
+            <button onclick="switchTab('produk')" id="tab-produk" class="tab-btn py-2.5 rounded-lg text-teal-400 bg-slate-800">1. Desain</button>
+            <button onclick="switchTab('form')" id="tab-form" class="tab-btn py-2.5 rounded-lg text-slate-400 hover:text-white">2. Pesan</button>
+            <button onclick="switchTab('bayar')" id="tab-bayar" class="tab-btn py-2.5 rounded-lg text-slate-400 hover:text-white">3. Pembayaran</button>
+            <button onclick="switchTab('stats')" id="tab-stats" class="tab-btn py-2.5 rounded-lg text-slate-400 hover:text-white">4. Statistik & Admin</button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto px-4 mt-6">
+
+        <!-- TAB 1: DESAIN KAOS -->
+        <section id="sec-produk" class="tab-content">
+            <div class="glass-card rounded-2xl p-4 sm:p-6 mb-6">
+                <h2 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fas fa-tshirt text-teal-400"></i> Desain Kaos Seragam Assab'ah
+                </h2>
+                <p class="text-slate-400 text-sm mb-4">Edisi Khusus Santri & Umum. Bahan Cotton Combed Premium High Quality.</p>
+                
+                <!-- Preview Foto Utama -->
+                <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 flex justify-center p-2 mb-3">
+                    <img id="main-product-img" src="design_kaos.jpeg" alt="Preview Kaos Assabah" class="w-full max-w-md object-contain rounded-lg transition-all duration-300 h-72 sm:h-96">
+                </div>
+
+                <!-- Thumbnail Pilihan 3 Foto -->
+                <div class="grid grid-cols-3 gap-2 mb-4">
+                    <button onclick="changePhoto('design_kaos.jpeg', this)" class="thumb-btn border-2 border-teal-500 rounded-lg overflow-hidden bg-slate-900 p-1 text-center transition">
+                        <img src="design_kaos.jpeg" class="w-full h-16 object-cover rounded mb-1">
+                        <span class="text-[10px] font-bold text-teal-400 block">Keseluruhan</span>
+                    </button>
+                    <button onclick="changePhoto('depan.jpeg', this)" class="thumb-btn border-2 border-slate-700 rounded-lg overflow-hidden bg-slate-900 p-1 text-center transition opacity-75 hover:opacity-100">
+                        <img src="depan.jpeg" class="w-full h-16 object-cover rounded mb-1">
+                        <span class="text-[10px] font-bold text-slate-300 block">Desain Depan</span>
+                    </button>
+                    <button onclick="changePhoto('belakang.jpeg', this)" class="thumb-btn border-2 border-slate-700 rounded-lg overflow-hidden bg-slate-900 p-1 text-center transition opacity-75 hover:opacity-100">
+                        <img src="belakang.jpeg" class="w-full h-16 object-cover rounded mb-1">
+                        <span class="text-[10px] font-bold text-slate-300 block">Desain Belakang</span>
+                    </button>
+                </div>
+
+                <div class="flex justify-between items-center bg-slate-900 p-4 rounded-xl border border-slate-800">
+                    <div>
+                        <span class="text-xs text-slate-400 block">Pilihan Lengan</span>
+                        <span class="text-sm font-semibold text-white">Pendek & Panjang</span>
+                    </div>
+                    <button onclick="switchTab('form')" class="bg-teal-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm btn-glow hover:bg-teal-400">
+                        Pesan Sekarang <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: FORMULIR PEMESANAN -->
+        <section id="sec-form" class="tab-content hidden">
+            <div class="glass-card rounded-2xl p-5 sm:p-6 mb-6">
+                <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fas fa-edit text-teal-400"></i> Form Pendataan Pemesan
+                </h2>
+                <form id="orderForm" onsubmit="submitForm(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Lengkap *</label>
+                        <input type="text" id="nama" required placeholder="Masukkan nama Anda" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nomor WhatsApp *</label>
+                        <input type="tel" id="no_wa" required placeholder="08xxxxxxxxxx" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Tipe Lengan *</label>
+                            <select id="type_lengan" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-3 text-white text-sm focus:outline-none focus:border-teal-500">
+                                <option value="Pendek">Pendek</option>
+                                <option value="Panjang">Panjang</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Ukuran *</label>
+                            <select id="ukuran" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-3 text-white text-sm focus:outline-none focus:border-teal-500">
+                                <option value="S">S</option>
+                                <option value="M" selected>M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                                <option value="3XL">3XL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Jumlah (Pcs) *</label>
+                        <input type="number" id="jumlah" min="1" value="1" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-teal-500">
+                    </div>
+                    <button type="submit" class="w-full bg-teal-500 text-slate-950 font-bold py-3.5 rounded-xl text-sm btn-glow hover:bg-teal-400 mt-2">
+                        Simpan Data Pesanan
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAB 3: PEMBAYARAN DANA -->
+        <section id="sec-bayar" class="tab-content hidden">
+            <div class="glass-card rounded-2xl p-5 sm:p-6 mb-6">
+                <h2 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fas fa-wallet text-teal-400"></i> Informasi Pembayaran & QR Code DANA
+                </h2>
+                <p class="text-xs text-slate-400 mb-4">Scan QR Code DANA di bawah atau gunakan nomor transfer untuk pembayaran (DP / Nyicil / Lunas / Cash)[cite: 1].</p>
+
+                <!-- Box QR Code DANA -->
+                <div class="bg-white p-4 rounded-2xl max-w-xs mx-auto text-center border-4 border-teal-500/30 mb-5 shadow-lg">
+                    <div class="text-slate-900 font-black text-sm border-b pb-1 mb-2 tracking-wide">QR DANA ASSAB'AH</div>
+                    <img src="qrku.jpeg" alt="QR Code DANA" class="w-48 h-48 mx-auto object-contain rounded-lg">
+                    <span class="text-[10px] text-slate-500 mt-2 block font-medium">Scan via Aplikasi DANA[cite: 1]</span>
+                </div>
+
+                <!-- Box No DANA -->
+                <div class="bg-slate-900 border border-slate-700 p-4 rounded-2xl mb-5 text-center">
+                    <span class="text-xs text-slate-400 uppercase tracking-wider block mb-1">Atau Transfer Manual ke No DANA</span>
+                    <div class="text-xl font-black text-teal-400 tracking-wide mb-1">0857-7482-3706</div>
+                    <span class="text-xs text-slate-300 block font-medium mb-3">a.n. Admin Assab'ah Project</span>
+                    
+                    <a href="https://link.dana.id/sendmoney?phoneNumber=6285774823706" target="_blank" class="inline-block bg-blue-500 hover:bg-blue-400 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs transition shadow-lg w-full sm:w-auto">
+                        <i class="fas fa-external-link-alt mr-1"></i> Buka Aplikasi DANA (Kirim Otomatis)[cite: 1]
+                    </a>
+
+                    <div class="mt-3 pt-3 border-t border-slate-800 text-[11px] text-slate-400 grid grid-cols-3 gap-1">
+                        <div class="bg-slate-800 p-1.5 rounded"><span class="text-amber-400 font-bold block">DP</span>Bisa Minimal[cite: 1]</div>
+                        <div class="bg-slate-800 p-1.5 rounded"><span class="text-teal-400 font-bold block">Nyicil</span>Bertahap Oke[cite: 1]</div>
+                        <div class="bg-slate-800 p-1.5 rounded"><span class="text-emerald-400 font-bold block">Cash</span>Bayar Langsung[cite: 1]</div>
+                    </div>
+                </div>
+
+                <!-- Form Konfirmasi dengan Pencarian Nama -->
+                <div class="border-t border-slate-800 pt-4">
+                    <h3 class="text-sm font-bold text-white mb-3">Konfirmasi Pembayaran</h3>
+                    <form onsubmit="konfirmasiBayarDANA(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Cari / Pilih Nama Pemesan:</label>
+                            <input type="text" id="input-search-pemesan" list="list-pemesan" required placeholder="Ketik nama untuk mencari..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white text-sm focus:outline-none focus:border-teal-500">
+                            <datalist id="list-pemesan">
+                                <!-- Injected by JavaScript -->
+                            </datalist>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Keterangan Jenis Bayar:</label>
+                            <select id="jenis_bayar" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white text-sm">
+                                <option value="DP (Uang Muka)">Bayar DP (Uang Muka)</option>
+                                <option value="Cicilan / Nyicil">Nyicil / Bertahap</option>
+                                <option value="Lunas Transfer">Lunas via Transfer DANA</option>
+                                <option value="Cash / Tunai Langsung">Cash / Tunai Langsung ke PJ</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-400 mb-1">Upload Bukti Transfer (Opsional jika Cash):</label>
+                            <input type="file" id="bukti_bayar" accept="image/*" class="w-full text-xs text-slate-400 bg-slate-900 border border-slate-700 rounded-xl p-2.5">
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl text-sm transition flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-lg"></i> Kirim Konfirmasi ke WA Admin
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: STATISTIK & AREA ADMIN -->
+        <section id="sec-stats" class="tab-content hidden">
+            
+            <!-- Statistik Publik (Selalu Tampil) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+                <div class="glass-card p-4 rounded-xl text-center">
+                    <span class="text-xs text-slate-400 block">Total Pemesan</span>
+                    <span id="stat-total-pemesan" class="text-2xl font-black text-teal-400">0</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center">
+                    <span class="text-xs text-slate-400 block">Total Pcs Kaos</span>
+                    <span id="stat-total-pcs" class="text-2xl font-black text-amber-400">0</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl text-center col-span-2 sm:col-span-1">
+                    <span class="text-xs text-slate-400 block">Lengan Pj / Pk</span>
+                    <span id="stat-lengan-ratio" class="text-lg font-bold text-white mt-1">0 / 0</span>
+                </div>
+            </div>
+
+            <!-- Charts Container (Publik) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="glass-card p-4 rounded-xl">
+                    <h4 class="text-xs font-bold text-slate-300 mb-3 text-center">Statistik Perbandingan Ukuran</h4>
+                    <div class="h-48"><canvas id="chartUkuran"></canvas></div>
+                </div>
+                <div class="glass-card p-4 rounded-xl">
+                    <h4 class="text-xs font-bold text-slate-300 mb-3 text-center">Statistik Tipe Lengan</h4>
+                    <div class="h-48"><canvas id="chartLengan"></canvas></div>
+                </div>
+            </div>
+
+            <!-- Panel Login Admin (Tampil jika belum login) -->
+            <div id="admin-login-box" class="glass-card rounded-2xl p-6 mb-6 text-center max-w-md mx-auto border border-teal-500/30">
+                <div class="w-12 h-12 bg-teal-500/10 text-teal-400 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="text-base font-bold text-white mb-1">Area Khusus Admin</h3>
+                <p class="text-xs text-slate-400 mb-4">Masukkan password admin untuk melihat daftar nama pemesan & mengelola data.</p>
+                
+                <form onsubmit="handleAdminLogin(event)" class="space-y-3">
+                    <input type="password" id="admin-pass" required placeholder="Password Admin" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs text-center focus:outline-none focus:border-teal-500">
+                    <button type="submit" class="w-full bg-teal-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:bg-teal-400 transition">
+                        Login Admin
+                    </button>
+                </form>
+            </div>
+
+            <!-- Panel Rincian Nama Pemesan (Hanya Tampil Setelah Login) -->
+            <div id="admin-dashboard" class="hidden">
+                <div class="flex justify-between items-center bg-slate-900/90 border border-teal-500/30 px-4 py-3 rounded-xl mb-4">
+                    <div class="flex items-center gap-2 text-xs text-teal-400 font-semibold">
+                        <i class="fas fa-user-shield"></i> Status: <span class="text-white">Admin Logged In (Nama Pemesan Terbuka)</span>
+                    </div>
+                    <button onclick="handleAdminLogout()" class="bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-1 rounded-lg text-xs hover:bg-rose-500 hover:text-white transition">
+                        Logout Admin
+                    </button>
+                </div>
+
+                <!-- Tabel Data Rahasia Admin -->
+                <div class="glass-card rounded-2xl p-4 overflow-hidden">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-sm font-bold text-white">Daftar Rahasia Pemesan (Database MySQL)[cite: 1]</h3>
+                        <button onclick="exportCSV()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700">
+                            <i class="fas fa-file-excel mr-1 text-emerald-400"></i> Export CSV[cite: 1]
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300">
+                            <thead class="bg-slate-900/80 text-slate-400 uppercase border-b border-slate-800">
+                                <tr>
+                                    <th class="p-2.5">Nama</th>
+                                    <th class="p-2.5">No WA</th>
+                                    <th class="p-2.5">Ukuran</th>
+                                    <th class="p-2.5">Lengan</th>
+                                    <th class="p-2.5">Qty</th>
+                                    <th class="p-2.5 text-center">Aksi Admin</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabel-body" class="divide-y divide-slate-800">
+                                <!-- Injected by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modal Edit Data -->
+    <div id="editModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card rounded-2xl p-5 max-w-sm w-full border border-slate-700">
+            <h3 class="text-sm font-bold text-white mb-3"><i class="fas fa-edit text-teal-400 mr-1"></i> Edit Data Pesanan</h3>
+            <form id="editForm" onsubmit="submitEdit(event)" class="space-y-3">
+                <input type="hidden" id="edit-id">
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">Nama:</label>
+                    <input type="text" id="edit-nama" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">No WA:</label>
+                    <input type="text" id="edit-wa" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Ukuran:</label>
+                        <select id="edit-ukuran" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-2 text-white text-xs">
+                            <option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="3XL">3XL</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-400 mb-1">Lengan:</label>
+                        <select id="edit-lengan" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-2 text-white text-xs">
+                            <option value="Pendek">Pendek</option><option value="Panjang">Panjang</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1">Jumlah (Pcs):</label>
+                    <input type="number" id="edit-jumlah" min="1" required class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="closeEditModal()" class="w-1/2 bg-slate-800 hover:bg-slate-700 text-slate-300 py-2 rounded-lg text-xs font-semibold">Batal</button>
+                    <button type="submit" class="w-1/2 bg-teal-500 hover:bg-teal-400 text-slate-950 py-2 rounded-lg text-xs font-bold">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button Mobile -->
+    <a href="https://wa.me/6285774823706?text=Halo%20Admin,%20saya%20mau%20tanya%20info%20kaos" target="_blank" class="fixed bottom-4 right-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold p-3.5 rounded-full shadow-lg z-50 flex items-center justify-center btn-glow">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- JavaScript Engine -->
+    <script>
+        let dataOrders = [];
+        let chartUkuranObj = null;
+        let chartLenganObj = null;
+        let isAdminLoggedIn = localStorage.getItem('assabah_admin_auth') === 'true';
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchOrdersFromDB();
+            checkAdminAuthUI();
+        });
+
+        function fetchOrdersFromDB() {
+            fetch('api_get_orders.php')
+                .then(response => response.json())
+                .then(res => {
+                    if (res.success) {
+                        dataOrders = res.data;
+                        renderStatsAndCharts();
+                        populateSelectPemesan();
+                        if (isAdminLoggedIn) {
+                            renderAdminTable();
+                        }
+                    }
+                })
+                .catch(err => console.error("Gagal memuat data:", err));
+        }
+
+        // Sistem Auth Admin dengan Password Baru
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('admin-pass').value;
+            if (pass === 'Assabah2026!@') {
+                localStorage.setItem('assabah_admin_auth', 'true');
+                isAdminLoggedIn = true;
+                checkAdminAuthUI();
+                renderAdminTable();
+            } else {
+                alert('Password salah!');
+            }
+        }
+
+        function handleAdminLogout() {
+            localStorage.removeItem('assabah_admin_auth');
+            isAdminLoggedIn = false;
+            checkAdminAuthUI();
+        }
+
+        function checkAdminAuthUI() {
+            const loginBox = document.getElementById('admin-login-box');
+            const dashboard = document.getElementById('admin-dashboard');
+            if (isAdminLoggedIn) {
+                loginBox.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                renderAdminTable();
+            } else {
+                loginBox.classList.remove('hidden');
+                dashboard.classList.add('hidden');
+            }
+        }
+
+        function changePhoto(imgUrl, element) {
+            document.getElementById('main-product-img').src = imgUrl;
+            document.querySelectorAll('.thumb-btn').forEach(btn => {
+                btn.classList.remove('border-teal-500', 'opacity-100');
+                btn.classList.add('border-slate-700', 'opacity-75');
+                const span = btn.querySelector('span');
+                if(span) { span.classList.remove('text-teal-400'); span.classList.add('text-slate-300'); }
+            });
+            element.classList.remove('border-slate-700', 'opacity-75');
+            element.classList.add('border-teal-500', 'opacity-100');
+            const activeSpan = element.querySelector('span');
+            if(activeSpan) { activeSpan.classList.remove('text-slate-300'); activeSpan.classList.add('text-teal-400'); }
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-800', 'text-teal-400');
+                btn.classList.add('text-slate-400');
+            });
+
+            document.getElementById('sec-' + tabName).classList.remove('hidden');
+            const activeBtn = document.getElementById('tab-' + tabName);
+            activeBtn.classList.add('bg-slate-800', 'text-teal-400');
+            activeBtn.classList.remove('text-slate-400');
+
+            if(tabName === 'stats') {
+                fetchOrdersFromDB();
+            }
+            if(tabName === 'bayar') populateSelectPemesan();
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('nama', document.getElementById('nama').value);
+            formData.append('no_wa', document.getElementById('no_wa').value);
+            formData.append('ukuran', document.getElementById('ukuran').value);
+            formData.append('type_lengan', document.getElementById('type_lengan').value);
+            formData.append('jumlah', document.getElementById('jumlah').value);
+
+            fetch('api_simpan.php', { method: 'POST', body: formData })
+            .then(res => res.json())
+            .then(res => {
+                if(res.success) {
+                    alert('Pesanan berhasil disimpan ke database!');
+                    document.getElementById('orderForm').reset();
+                    fetchOrdersFromDB();
+                    switchTab('bayar');
+                } else { alert('Gagal: ' + res.message); }
+            });
+        }
+
+        // Render Statistik Publik (Selalu Tampil)
+        function renderStatsAndCharts() {
+            const totalPemesan = dataOrders.length;
+            const totalPcs = dataOrders.reduce((sum, o) => sum + o.jumlah, 0);
+            const pjCount = dataOrders.filter(o => o.type_lengan === 'Panjang').reduce((s, o) => s + o.jumlah, 0);
+            const pkCount = dataOrders.filter(o => o.type_lengan === 'Pendek').reduce((s, o) => s + o.jumlah, 0);
+
+            document.getElementById('stat-total-pemesan').innerText = totalPemesan;
+            document.getElementById('stat-total-pcs').innerText = totalPcs;
+            document.getElementById('stat-lengan-ratio').innerText = `${pjCount} Pj / ${pkCount} Pk`;
+
+            renderCharts(pkCount, pjCount);
+        }
+
+        // Render Tabel Khusus Admin (Nama Muncul Hanya Saat Login)
+        function renderAdminTable() {
+            const tbody = document.getElementById('tabel-body');
+            tbody.innerHTML = '';
+            
+            if(dataOrders.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center p-4 text-slate-500">Belum ada data pesanan.</td></tr>`;
+                return;
+            }
+
+            dataOrders.forEach((item) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-900/50">
+                        <td class="p-2.5 font-medium text-white">${item.nama}</td>
+                        <td class="p-2.5 text-slate-400">${item.no_wa || '-'}</td>
+                        <td class="p-2.5"><span class="bg-slate-800 border border-slate-700 px-2 py-0.5 rounded text-[10px]">${item.ukuran}</span></td>
+                        <td class="p-2.5">${item.type_lengan}</td>
+                        <td class="p-2.5 font-bold text-amber-400">${item.jumlah}</td>
+                        <td class="p-2.5 text-center flex justify-center gap-2">
+                            <button onclick='openEditModal(${JSON.stringify(item)})' class="bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-white px-2.5 py-1 rounded text-[11px] transition" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button onclick="hapusOrder(${item.id})" class="bg-rose-500/20 text-rose-400 hover:bg-rose-500 hover:text-white px-2.5 py-1 rounded text-[11px] transition" title="Hapus"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function openEditModal(item) {
+            document.getElementById('edit-id').value = item.id;
+            document.getElementById('edit-nama').value = item.nama;
+            document.getElementById('edit-wa').value = item.no_wa || '';
+            document.getElementById('edit-ukuran').value = item.ukuran;
+            document.getElementById('edit-lengan').value = item.type_lengan;
+            document.getElementById('edit-jumlah').value = item.jumlah;
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+        }
+
+        function submitEdit(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('id', document.getElementById('edit-id').value);
+            formData.append('nama', document.getElementById('edit-nama').value);
+            formData.append('no_wa', document.getElementById('edit-wa').value);
+            formData.append('ukuran', document.getElementById('edit-ukuran').value);
+            formData.append('type_lengan', document.getElementById('edit-lengan').value);
+            formData.append('jumlah', document.getElementById('edit-jumlah').value);
+
+            fetch('api_update.php', { method: 'POST', body: formData })
+            .then(res => res.json())
+            .then(res => {
+                if(res.success) {
+                    alert('Data berhasil diubah!');
+                    closeEditModal();
+                    fetchOrdersFromDB();
+                } else { alert('Gagal memperbarui data.'); }
+            });
+        }
+
+        function hapusOrder(id) {
+            if(confirm('Yakin ingin menghapus data pesanan ini dari database?')) {
+                const formData = new FormData();
+                formData.append('id', id);
+                fetch('api_hapus.php', { method: 'POST', body: formData })
+                .then(res => res.json())
+                .then(res => {
+                    if(res.success) {
+                        fetchOrdersFromDB();
+                    } else { alert('Gagal menghapus data.'); }
+                });
+            }
+        }
+
+        function renderCharts(pk, pj) {
+            const sizeCounts = { 'S': 0, 'M': 0, 'L': 0, 'XL': 0, 'XXL': 0, '3XL': 0 };
+            dataOrders.forEach(o => { if(sizeCounts[o.ukuran] !== undefined) sizeCounts[o.ukuran] += o.jumlah; });
+
+            if(chartUkuranObj) chartUkuranObj.destroy();
+            if(chartLenganObj) chartLenganObj.destroy();
+
+            const ctxUkuran = document.getElementById('chartUkuran').getContext('2d');
+            chartUkuranObj = new Chart(ctxUkuran, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(sizeCounts),
+                    datasets: [{ label: 'Jumlah (Pcs)', data: Object.values(sizeCounts), backgroundColor: '#14b8a6' }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+
+            const ctxLengan = document.getElementById('chartLengan').getContext('2d');
+            chartLenganObj = new Chart(ctxLengan, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pendek', 'Panjang'],
+                    datasets: [{ data: [pk, pj], backgroundColor: ['#3b82f6', '#f59e0b'] }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        }
+
+        // Populate Datalist Pemesan di Tab Pembayaran dengan Fitur Pencarian
+        function populateSelectPemesan() {
+            const datalist = document.getElementById('list-pemesan');
+            if(!datalist) return;
+            datalist.innerHTML = '';
+            dataOrders.forEach(item => {
+                const optionValue = `${item.nama} (${item.ukuran} - ${item.type_lengan} - ${item.jumlah} pcs)`;
+                datalist.innerHTML += `<option value="${optionValue}">`;
+            });
+        }
+
+        function konfirmasiBayarDANA(e) {
+            e.preventDefault();
+            const pemesan = document.getElementById('input-search-pemesan').value;
+            const jenisBayar = document.getElementById('jenis_bayar').value;
+            
+            if (!pemesan) {
+                alert('Silakan pilih atau ketik nama pemesan terlebih dahulu!');
+                return;
+            }
+
+            const text = encodeURIComponent(`Halo Admin, saya mau konfirmasi pembayaran kaos Assab'ah:\n\n- Nama/Pesanan: ${pemesan}\n- Status Bayar: ${jenisBayar}\n\nMohon dicek ya min, terima kasih!`);
+            window.open(`https://wa.me/6285774823706?text=${text}`, '_blank');
+        }
+
+        function exportCSV() {
+            let csv = 'Nama,No WA,Ukuran,Tipe Lengan,Jumlah\n';
+            dataOrders.forEach(o => {
+                csv += `"${o.nama}","${o.no_wa || '-'}","${o.ukuran}","${o.type_lengan}",${o.jumlah}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'Rekap_Pesanan_Assabah.csv');
+            a.click();
+        }
+    </script>
+</body>
+</html>
